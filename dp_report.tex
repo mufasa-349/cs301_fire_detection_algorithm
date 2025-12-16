@@ -1,0 +1,96 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{Minimum Camera Placement for Forest Monitoring -- DP Design}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Problem}
+We are given a forest graph $G=(V,E)$. Each vertex represents a candidate designated point (cdp) where we can place a camera, and each edge represents a shared region that can be monitored by cameras at two different cdps. The goal is to find the minimum number of cameras needed to monitor all vertices (regions).
+
+This is the \emph{minimum dominating set} problem. While it is NP-hard for general graphs, it can be solved in polynomial time using dynamic programming (DP) for forest structures (trees). The following DP finds the optimum by rooting each tree.
+
+\section*{DP Design}
+\subsection*{1) Subproblems}
+For each node $v$, we maintain three states (tree rooted at $r$):
+\begin{itemize}
+  \item $dp[v][0]$: Camera is placed at $v$.
+  \item $dp[v][1]$: No camera at $v$, but at least one child has a camera and $v$ is dominated.
+  \item $dp[v][2]$: No camera at $v$, $v$ is not yet dominated; domination must come from parent.
+\end{itemize}
+
+\subsection*{2) Recursive Formulation}
+For a leaf node:
+\[
+dp[v][0]=1,\quad dp[v][1]=\infty,\quad dp[v][2]=0
+\]
+
+For an internal node $v$ with children set $C(v)$:
+\[
+dp[v][0] = 1 + \sum_{c \in C(v)} \min(dp[c][0], dp[c][1], dp[c][2])
+\]
+\[
+dp[v][2] = \sum_{c \in C(v)} \min(dp[c][0], dp[c][1])
+\]
+In state $1$, $v$ must be dominated by at least one child camera:
+\[
+base = \sum_{c \in C(v)} \min(dp[c][0], dp[c][1])
+\]
+\[
+dp[v][1] = 
+\begin{cases}
+\infty, & C(v)=\emptyset\\
+base + \min_{c \in C(v)} \big( dp[c][0]-\min(dp[c][0], dp[c][1]) \big), & \text{otherwise}
+\end{cases}
+\]
+This is because at least one child must actually have a camera (state $0$).
+
+Valid answer for root: $\min(dp[r][0], dp[r][1])$ (root must be dominated).
+
+\subsection*{3) Justification for DP}
+\begin{itemize}
+  \item Optimal substructure: The optimal solution for each subtree (child) is independent of others; combinations only interact through state labels.
+  \item Number of subproblems: Constant number of states per node, total $O(|V|)$ subproblems.
+  \item Overlapping subproblems: Each node's states cannot be requested by multiple parents (tree structure), so memoization with DP is efficient.
+\end{itemize}
+
+\subsection*{4) Pseudocode}
+\begin{algorithm}[h]
+\caption{MinCamerasOnTree($G$, $r$)}
+\begin{algorithmic}[1]
+\Function{Solve}{$v$, $parent$}
+  \State $dp[v][0] \gets 1$ \Comment{Cost if camera placed at $v$}
+  \State $dp[v][1] \gets \infty$ \Comment{Initially impossible}
+  \State $dp[v][2] \gets 0$ \Comment{Cost if $v$ waits for parent}
+  \For{child $c$ of $v$ where $c \neq parent$}
+    \State \Call{Solve}{$c, v$} \Comment{Process children first}
+  \EndFor
+  \State $base \gets 0$, $gain \gets \infty$
+  \For{child $c$ of $v$ where $c \neq parent$}
+    \State $m02 \gets \min(dp[c][0], dp[c][1], dp[c][2])$ \Comment{Best for state 0}
+    \State $m01 \gets \min(dp[c][0], dp[c][1])$ \Comment{Best for states 1 and 2}
+    \State $dp[v][0] \gets dp[v][0] + m02$
+    \State $dp[v][2] \gets dp[v][2] + m01$
+    \State $base \gets base + m01$
+    \State $gain \gets \min(gain, dp[c][0]-m01)$ \Comment{Extra cost to force state 0}
+  \EndFor
+  \If{$gain < \infty$}
+    \State $dp[v][1] \gets base + gain$ \Comment{At least one child has camera}
+  \EndIf
+\EndFunction
+\State \Call{Solve}{$r, -1$}
+\State \Return $\min(dp[r][0], dp[r][1])$ \Comment{Root must be dominated}
+\end{algorithmic}
+\end{algorithm}
+
+\subsection*{Time Complexity}
+Each edge is visited at most twice; $O(1)$ work per node. Total complexity is $O(|V|+|E|)$, space complexity is $O(|V|)$.
+
+\end{document}
