@@ -1,0 +1,8 @@
+Test Instance: test_2_two_nodes
+Description: Two nodes (single edge)
+Number of nodes (n): 2
+Number of edges (m): 1
+Edges:
+  0 1
+
+Expected minimum cameras: 1

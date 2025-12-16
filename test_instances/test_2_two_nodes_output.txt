@@ -1,0 +1,7 @@
+Test Instance: test_2_two_nodes
+Description: Two nodes (single edge)
+
+Algorithm Result:
+Minimum number of cameras: 1
+Expected: 1
+Status: PASS

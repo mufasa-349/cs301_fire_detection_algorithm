@@ -1,0 +1,7 @@
+Test Instance: test_6_forest_2_components
+Description: Forest with multiple components
+
+Algorithm Result:
+Minimum number of cameras: 2
+Expected: 2
+Status: PASS

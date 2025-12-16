@@ -1,0 +1,6 @@
+Benchmark Instance: random_9500_8
+Instance ID: 1395
+Number of nodes (n): 9500
+
+Algorithm Result:
+Minimum number of cameras: 3424

@@ -1,0 +1,6 @@
+Benchmark Instance: star_95_3
+Instance ID: 867
+Number of nodes (n): 95
+
+Algorithm Result:
+Minimum number of cameras: 1

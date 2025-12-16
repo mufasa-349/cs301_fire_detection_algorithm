@@ -1,0 +1,6 @@
+Benchmark Instance: binary_70_8
+Instance ID: 643
+Number of nodes (n): 70
+
+Algorithm Result:
+Minimum number of cameras: 21

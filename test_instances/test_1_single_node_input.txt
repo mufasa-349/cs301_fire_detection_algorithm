@@ -1,0 +1,7 @@
+Test Instance: test_1_single_node
+Description: Single node (isolated vertex)
+Number of nodes (n): 1
+Number of edges (m): 0
+Edges:
+
+Expected minimum cameras: 1

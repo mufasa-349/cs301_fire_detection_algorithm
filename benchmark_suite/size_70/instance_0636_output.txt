@@ -1,0 +1,6 @@
+Benchmark Instance: path_70_7
+Instance ID: 636
+Number of nodes (n): 70
+
+Algorithm Result:
+Minimum number of cameras: 24

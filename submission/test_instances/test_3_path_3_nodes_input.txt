@@ -1,0 +1,9 @@
+Test Instance: test_3_path_3_nodes
+Description: Path of 3 nodes
+Number of nodes (n): 3
+Number of edges (m): 2
+Edges:
+  0 1
+  1 2
+
+Expected minimum cameras: 1

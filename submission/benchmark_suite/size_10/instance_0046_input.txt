@@ -1,0 +1,14 @@
+Benchmark Instance: path_10_9
+Instance ID: 46
+Number of nodes (n): 10
+Number of edges (m): 9
+Edges:
+  0 1
+  1 2
+  2 3
+  3 4
+  4 5
+  5 6
+  6 7
+  7 8
+  8 9

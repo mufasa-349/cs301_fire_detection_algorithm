@@ -1,0 +1,11 @@
+Test Instance: test_6_forest_2_components
+Description: Forest with multiple components
+Number of nodes (n): 6
+Number of edges (m): 4
+Edges:
+  0 1
+  1 2
+  3 4
+  4 5
+
+Expected minimum cameras: 2

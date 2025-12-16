@@ -1,0 +1,24 @@
+Benchmark Instance: random_20_1
+Instance ID: 109
+Number of nodes (n): 20
+Number of edges (m): 19
+Edges:
+  3 5
+  0 9
+  8 10
+  7 8
+  7 11
+  4 12
+  3 4
+  17 3
+  2 14
+  18 15
+  13 17
+  1 13
+  0 1
+  2 0
+  6 2
+  7 6
+  16 7
+  19 16
+  18 19

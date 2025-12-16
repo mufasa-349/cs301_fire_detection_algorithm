@@ -1,0 +1,14 @@
+Benchmark Instance: random_10_9
+Instance ID: 49
+Number of nodes (n): 10
+Number of edges (m): 9
+Edges:
+  2 0
+  1 2
+  7 1
+  5 4
+  3 5
+  3 6
+  7 3
+  7 8
+  7 9

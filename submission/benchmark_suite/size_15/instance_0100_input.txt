@@ -1,0 +1,18 @@
+Benchmark Instance: forest_15_9
+Instance ID: 100
+Number of nodes (n): 15
+Number of edges (m): 13
+Edges:
+  3 1
+  4 2
+  6 4
+  0 5
+  3 0
+  3 6
+  3 7
+  10 9
+  8 10
+  11 8
+  12 13
+  11 12
+  11 14

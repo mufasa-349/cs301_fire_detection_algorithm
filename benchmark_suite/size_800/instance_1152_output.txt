@@ -1,0 +1,6 @@
+Benchmark Instance: forest_800_3
+Instance ID: 1152
+Number of nodes (n): 800
+
+Algorithm Result:
+Minimum number of cameras: 283

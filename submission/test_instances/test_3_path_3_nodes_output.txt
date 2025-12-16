@@ -1,0 +1,7 @@
+Test Instance: test_3_path_3_nodes
+Description: Path of 3 nodes
+
+Algorithm Result:
+Minimum number of cameras: 1
+Expected: 1
+Status: PASS
