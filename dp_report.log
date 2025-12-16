@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.11.24)  16 DEC 2025 13:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.11.24)  16 DEC 2025 13:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -151,8 +151,7 @@ ef
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count291
 \l__pdf_internal_box=\box56
-)
-No file dp_report.aux.
+) (./dp_report.aux)
 \openout1 = `dp_report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
@@ -170,6 +169,7 @@ LaTeX Font Info:    ... okay on input line 12.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
 LaTeX Font Info:    ... okay on input line 12.
 LaTeX Font Info:    Trying to load font information for U+msa on input line 13.
+
 
 (/usr/local/texlive/2025basic/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -198,10 +198,10 @@ L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 2448 strings out of 474662
- 36122 string characters out of 5751108
- 424080 words of memory out of 5000000
- 25499 multiletter control sequences out of 15000+600000
+ 2453 strings out of 474662
+ 36232 string characters out of 5751108
+ 428080 words of memory out of 5000000
+ 25502 multiletter control sequences out of 15000+600000
  567682 words of font info for 70 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
  56i,11n,65p,349b,295s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -220,7 +220,7 @@ basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/20
 2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texl
 ive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/t
 exlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on dp_report.pdf (3 pages, 148819 bytes).
+Output written on dp_report.pdf (3 pages, 152021 bytes).
 PDF statistics:
  84 PDF objects out of 1000 (max. 8388607)
  51 compressed objects within 1 object stream
