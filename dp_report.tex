@@ -124,4 +124,114 @@ Consider a sample tree with 5 cdps (nodes) where each cdp monitors 2--3 regions:
 \end{itemize}
 Placement achieving 3 cameras: cameras at nodes $\{0,3,1\}$ (or any equivalent minimum set).
 
+\section*{Task 5: Functional Testing}
+
+We design 7 test instances appropriate for both white-box and black-box functional testing. Each instance targets specific properties of the algorithm.
+
+\subsection*{Test Instances}
+
+\textbf{Instance 1: Single Node}
+\begin{itemize}
+  \item Graph: Isolated vertex (no edges)
+  \item Structure: $V=\{0\}$, $E=\emptyset$
+  \item Expected: 1 camera (the node must monitor itself)
+  \item \textbf{White-box testing:} Tests the base case initialization: $dp[v][0]=1$, $dp[v][1]=\infty$, $dp[v][2]=0$ for a leaf node.
+  \item \textbf{Black-box testing:} Tests minimal input handling - a single vertex must be monitored.
+\end{itemize}
+
+\textbf{Instance 2: Two Nodes}
+\begin{itemize}
+  \item Graph: Single edge connecting two nodes
+  \item Structure: Path $0-1$
+  \item Expected: 1 camera (at either node, covering both)
+  \item \textbf{White-box testing:} Tests state transitions where placing a camera at one node (state 0) covers its neighbor.
+  \item \textbf{Black-box testing:} Tests minimal connected graph - edge case for connectivity.
+\end{itemize}
+
+\textbf{Instance 3: Path of 3 Nodes}
+\begin{itemize}
+  \item Graph: Linear path
+  \item Structure: Path $0-1-2$
+  \item Expected: 1 camera (optimal at middle node 1)
+  \item \textbf{White-box testing:} Tests internal node with two children, state 1 calculation where a child's camera dominates the parent.
+  \item \textbf{Black-box testing:} Tests optimal placement in linear structures.
+\end{itemize}
+
+\textbf{Instance 4: Star Graph}
+\begin{itemize}
+  \item Graph: Center node connected to multiple leaves
+  \item Structure: Center 0 connected to leaves $\{1,2,3,4\}$
+  \item Expected: 1 camera (at center node 0)
+  \item \textbf{White-box testing:} Tests node with multiple children, gain calculation for state 1 when all children are leaves.
+  \item \textbf{Black-box testing:} Tests high-degree vertex scenario - hub-and-spoke topology.
+\end{itemize}
+
+\textbf{Instance 5: Binary Tree}
+\begin{itemize}
+  \item Graph: Balanced binary tree
+  \item Structure: Root 0, level-1: $\{1,2\}$, level-2: $\{3,4,5,6\}$
+  \item Expected: 2 cameras (optimal placement)
+  \item \textbf{White-box testing:} Tests recursive DP on balanced structure, multiple levels of recursion, complex state interactions.
+  \item \textbf{Black-box testing:} Tests hierarchical tree structure - realistic tree topology.
+\end{itemize}
+
+\textbf{Instance 6: Forest with Multiple Components}
+\begin{itemize}
+  \item Graph: Two disconnected paths
+  \item Structure: Component 1: $0-1-2$, Component 2: $3-4-5$
+  \item Expected: 2 cameras (1 per component)
+  \item \textbf{White-box testing:} Tests component detection algorithm, independent processing of each component, root selection.
+  \item \textbf{Black-box testing:} Tests disconnected graph handling - forest structure.
+\end{itemize}
+
+\textbf{Instance 7: Complex Tree}
+\begin{itemize}
+  \item Graph: Tree with multiple branching points
+  \item Structure: $0-1-2$, $1-3-4$ (root at 1)
+  \item Expected: 2 cameras (optimal: at nodes 1 and 3, or 1 and 4)
+  \item \textbf{White-box testing:} Tests complex state transitions, gain calculation with multiple children having different optimal states.
+  \item \textbf{Black-box testing:} Tests realistic scenario with multiple branching points and varying subtree structures.
+\end{itemize}
+
+\subsection*{Test Results}
+
+All 7 test instances passed successfully. The results are summarized in Table~\ref{tab:test_results}, showing each instance, its expected and actual camera counts, and the algorithm properties being tested.
+
+\begin{table}[h]
+\centering
+\caption{Functional Testing Results}
+\label{tab:test_results}
+\begin{tabular}{|l|c|c|c|p{5cm}|}
+\hline
+\textbf{Instance} & \textbf{Expected} & \textbf{Actual} & \textbf{Status} & \textbf{Properties Tested} \\
+\hline
+Single node & 1 & 1 & \checkmark & Base case initialization, leaf node handling \\
+\hline
+Two nodes & 1 & 1 & \checkmark & State transitions, minimal connectivity \\
+\hline
+Path (3 nodes) & 1 & 1 & \checkmark & Internal node with children, state 1 calculation \\
+\hline
+Star graph & 1 & 1 & \checkmark & High-degree vertex, multiple children, gain calculation \\
+\hline
+Binary tree & 2 & 2 & \checkmark & Recursive DP, multiple levels, balanced structure \\
+\hline
+Forest (2 components) & 2 & 2 & \checkmark & Component detection, independent processing \\
+\hline
+Complex tree & 2 & 2 & \checkmark & Complex state transitions, multiple branching \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection*{Properties Verified}
+
+The test suite verifies the following algorithm properties:
+\begin{itemize}
+  \item \textbf{Correctness:} All instances produce optimal solutions (verified manually for each case).
+  \item \textbf{Base cases:} Single node and two-node cases handled correctly.
+  \item \textbf{State transitions:} All three DP states (0, 1, 2) are correctly computed and used.
+  \item \textbf{Component handling:} Disconnected graphs are processed correctly by detecting and handling each component independently.
+  \item \textbf{Edge cases:} Minimal inputs, high-degree vertices, and various tree structures are handled correctly.
+  \item \textbf{Optimality:} The algorithm finds minimum camera placements for all test cases.
+\end{itemize}
+
 \end{document}
