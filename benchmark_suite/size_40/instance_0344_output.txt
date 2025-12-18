@@ -4,3 +4,4 @@ Number of nodes (n): 40
 
 Algorithm Result:
 Minimum number of cameras: 14
+Selected camera cdps (nodes): [0, 2, 3, 8, 10, 12, 16, 22, 27, 31, 32, 33, 34, 38]

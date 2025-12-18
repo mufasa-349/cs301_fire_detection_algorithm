@@ -3,5 +3,6 @@ Description: Forest with multiple components
 
 Algorithm Result:
 Minimum number of cameras: 2
+Selected camera cdps (nodes): [1, 4]
 Expected: 2
 Status: PASS

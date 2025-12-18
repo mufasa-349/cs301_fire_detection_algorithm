@@ -3,5 +3,6 @@ Description: Single node (isolated vertex)
 
 Algorithm Result:
 Minimum number of cameras: 1
+Selected camera cdps (nodes): [0]
 Expected: 1
 Status: PASS

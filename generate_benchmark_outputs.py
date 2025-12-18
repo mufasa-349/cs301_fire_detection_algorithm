@@ -4,7 +4,7 @@ I'm creating directories for each input size, with instance files and outputs.
 """
 import os
 from benchmark_dp_forest import generate_benchmark_instances
-from dp_forest import min_cameras_forest
+from dp_forest import min_cameras_forest_with_solution
 
 def create_benchmark_directory():
     """Create benchmark_suite directory structure."""
@@ -34,7 +34,8 @@ def write_benchmark_output(size_dir, instance_id, name, n, result):
         f.write(f"Instance ID: {instance_id}\n")
         f.write(f"Number of nodes (n): {n}\n")
         f.write(f"\nAlgorithm Result:\n")
-        f.write(f"Minimum number of cameras: {result}\n")
+        f.write(f"Minimum number of cameras: {result['count']}\n")
+        f.write(f"Selected camera cdps (nodes): {sorted(result['cameras'])}\n")
     return filename
 
 def main():
@@ -67,7 +68,8 @@ def main():
             instance_id = total_processed + idx
             
             # Run algorithm
-            result = min_cameras_forest(n, edges)
+            cnt, cams = min_cameras_forest_with_solution(n, edges)
+            result = {"count": cnt, "cameras": cams}
             
             # Write input file
             input_file = write_benchmark_instance(base_dir, size_dir, instance_id, name, n, edges)

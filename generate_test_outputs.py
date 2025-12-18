@@ -4,7 +4,7 @@ I'm creating input files describing each test instance and output files
 with the results from running the algorithm.
 """
 import os
-from dp_forest import min_cameras_forest
+from dp_forest import min_cameras_forest_with_solution
 
 # Test instances from test_dp_forest.py
 test_instances = [
@@ -87,9 +87,10 @@ def write_output_file(test_dir, test, result):
         f.write(f"Test Instance: {test['name']}\n")
         f.write(f"Description: {test['description']}\n")
         f.write(f"\nAlgorithm Result:\n")
-        f.write(f"Minimum number of cameras: {result}\n")
+        f.write(f"Minimum number of cameras: {result['count']}\n")
+        f.write(f"Selected camera cdps (nodes): {sorted(result['cameras'])}\n")
         f.write(f"Expected: {test['expected']}\n")
-        f.write(f"Status: {'PASS' if result == test['expected'] else 'FAIL'}\n")
+        f.write(f"Status: {'PASS' if result['count'] == test['expected'] else 'FAIL'}\n")
     return filename
 
 def main():
@@ -101,7 +102,8 @@ def main():
         print(f"Processing {test['name']}...")
         
         # Run algorithm
-        result = min_cameras_forest(test['n'], test['edges'])
+        cnt, cams = min_cameras_forest_with_solution(test['n'], test['edges'])
+        result = {"count": cnt, "cameras": cams}
         
         # Write input file
         input_file = write_instance_file(test_dir, test)

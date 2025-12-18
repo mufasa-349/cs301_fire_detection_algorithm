@@ -7,7 +7,7 @@ from __future__ import annotations
 
 from collections import defaultdict
 from math import inf
-from typing import Dict, Iterable, List, Set, Tuple
+from typing import Dict, Iterable, List, Set, Tuple, Optional
 
 
 def build_adj(n: int, edges: Iterable[Tuple[int, int]]) -> List[List[int]]:
@@ -89,6 +89,148 @@ def min_cameras_for_tree(adj: List[List[int]], root: int = 0) -> int:
     return min(dp[root][0], dp[root][1])
 
 
+def min_cameras_for_tree_with_solution(adj: List[List[int]], root: int = 0) -> Tuple[int, Set[int]]:
+    """
+    Same DP as `min_cameras_for_tree`, but also reconstructs *which* nodes (cdps)
+    should get cameras.
+
+    I'm doing this because the assignment's wording asks for the smallest set of cdps,
+    not just the size of that set.
+
+    Returns:
+      (min_camera_count, camera_nodes_set)
+    """
+    n = len(adj)
+    dp: List[List[float]] = [[0.0, 0.0, 0.0] for _ in range(n)]
+    # For state 1, we must force at least one child into state 0.
+    # This array remembers *which* child provides the minimal "gain".
+    best_child_for_state1: List[Optional[int]] = [None] * n
+
+    def dfs(v: int, parent: int) -> None:
+        dp[v][0] = 1.0
+        dp[v][1] = inf
+        dp[v][2] = 0.0
+
+        base = 0.0
+        gain = inf
+        best_child = None
+
+        for c in adj[v]:
+            if c == parent:
+                continue
+            dfs(c, v)
+
+            m02 = min(dp[c][0], dp[c][1], dp[c][2])
+            m01 = min(dp[c][0], dp[c][1])
+
+            dp[v][0] += m02
+            dp[v][2] += m01
+
+            base += m01
+            child_gain = dp[c][0] - m01
+            if child_gain < gain:
+                gain = child_gain
+                best_child = c
+
+        if best_child is not None:
+            dp[v][1] = base + gain
+            best_child_for_state1[v] = best_child
+
+    def argmin_state(values: List[float], allowed_states: Tuple[int, ...]) -> int:
+        """Deterministic tie-breaking: pick the smallest state index among minima."""
+        best_s = allowed_states[0]
+        best_v = values[best_s]
+        for s in allowed_states[1:]:
+            if values[s] < best_v - 1e-12 or (abs(values[s] - best_v) <= 1e-12 and s < best_s):
+                best_s = s
+                best_v = values[s]
+        return best_s
+
+    cameras: Set[int] = set()
+
+    def recon(v: int, parent: int, state: int) -> None:
+        # State 0 => camera at v
+        if state == 0:
+            cameras.add(v)
+            for c in adj[v]:
+                if c == parent:
+                    continue
+                cs = argmin_state(dp[c], (0, 1, 2))
+                recon(c, v, cs)
+            return
+
+        # State 2 => v is waiting for parent, so children must be self-sufficient (0 or 1)
+        if state == 2:
+            for c in adj[v]:
+                if c == parent:
+                    continue
+                cs = argmin_state(dp[c], (0, 1))
+                recon(c, v, cs)
+            return
+
+        # State 1 => v is dominated by at least one child camera
+        # We enforce exactly one "forced" child into state 0 (chosen during DP),
+        # and the remaining children can be in min(0,1).
+        forced = best_child_for_state1[v]
+        for c in adj[v]:
+            if c == parent:
+                continue
+            if forced is not None and c == forced:
+                recon(c, v, 0)
+            else:
+                cs = argmin_state(dp[c], (0, 1))
+                recon(c, v, cs)
+
+    dfs(root, -1)
+    root_state = argmin_state(dp[root], (0, 1))  # root cannot be in state 2
+    recon(root, -1, root_state)
+
+    return int(min(dp[root][0], dp[root][1])), cameras
+
+
+def min_cameras_forest_with_solution(
+    n: int, edges: Iterable[Tuple[int, int]], roots: Iterable[int] | None = None
+) -> Tuple[int, Set[int]]:
+    """
+    Forest version that also returns the selected camera cdps.
+
+    Returns:
+      (total_min_camera_count, set_of_camera_nodes)
+    """
+    adj = build_adj(n, edges)
+    seen: Set[int] = set()
+    total = 0
+    cameras: Set[int] = set()
+    root_map: Dict[int, int] = defaultdict(int)
+    if roots is not None:
+        for r in roots:
+            root_map[r] = r
+
+    def collect_component(start: int) -> List[int]:
+        stack = [start]
+        comp = []
+        seen.add(start)
+        while stack:
+            v = stack.pop()
+            comp.append(v)
+            for nb in adj[v]:
+                if nb not in seen:
+                    seen.add(nb)
+                    stack.append(nb)
+        return comp
+
+    for v in range(n):
+        if v in seen:
+            continue
+        component = collect_component(v)
+        root = next((r for r in component if r in root_map), component[0])
+        cnt, cams = min_cameras_for_tree_with_solution(adj, root)
+        total += cnt
+        cameras |= cams
+
+    return total, cameras
+
+
 def min_cameras_forest(
     n: int, edges: Iterable[Tuple[int, int]], roots: Iterable[int] | None = None
 ) -> int:
@@ -153,5 +295,7 @@ if __name__ == "__main__":
     edges = [(0, 1), (1, 2), (3, 4), (4, 5)]
     n = 6
     result = min_cameras_forest(n, edges)
+    result_with_set, cams = min_cameras_forest_with_solution(n, edges)
     print(f"Minimum number of cameras needed: {result}")
+    print(f"Selected camera cdps (nodes): {sorted(cams)}")
 
