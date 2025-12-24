@@ -121,8 +121,8 @@ def is_vertex_cover(n: int, edges: Iterable[Tuple[int, int]], cover: Set[int]) -
 if __name__ == "__main__":
     # Quick sanity checks
     # Triangle: minimum vertex cover size is 2
-    n = 3
-    edges = [(0, 1), (1, 2), (2, 0)]
+    n = 4
+    edges = [(0, 1), (1, 2), (2, 0), (2, 3), (3, 0)]
     k, cover = solve_vertex_cover_dp(n, edges)
     print("triangle:", k, sorted(cover), "valid:", is_vertex_cover(n, edges, cover))
 
