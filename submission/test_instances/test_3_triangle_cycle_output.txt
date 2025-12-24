@@ -1,0 +1,9 @@
+Test Instance: test_3_triangle_cycle
+Description: Triangle cycle 0-1-2-0 (cycle counterexample)
+
+Algorithm Result:
+Minimum number of cameras: 2
+Selected camera cdps (nodes): [0, 1]
+Is valid vertex cover?: True
+Expected: 2
+Status: PASS

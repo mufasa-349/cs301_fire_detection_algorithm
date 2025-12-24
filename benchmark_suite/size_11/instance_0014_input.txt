@@ -1,0 +1,19 @@
+Benchmark Instance: bip_11_p40_3
+Instance ID: 14
+Number of nodes (n): 11
+Number of edges (m): 14
+Edges:
+  0 5
+  0 6
+  0 7
+  0 8
+  0 10
+  1 9
+  1 10
+  2 6
+  2 8
+  3 9
+  4 5
+  4 6
+  4 7
+  4 10

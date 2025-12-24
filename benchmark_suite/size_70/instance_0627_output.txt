@@ -1,7 +1,0 @@
-Benchmark Instance: star_70_5
-Instance ID: 627
-Number of nodes (n): 70
-
-Algorithm Result:
-Minimum number of cameras: 1
-Selected camera cdps (nodes): [0]

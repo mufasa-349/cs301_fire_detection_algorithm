@@ -1,8 +1,9 @@
 Test Instance: test_6_forest_2_components
-Description: Forest with multiple components
+Description: Disconnected graph: one edge + one triangle
 
 Algorithm Result:
-Minimum number of cameras: 2
-Selected camera cdps (nodes): [1, 4]
-Expected: 2
+Minimum number of cameras: 3
+Selected camera cdps (nodes): [0, 2, 3]
+Is valid vertex cover?: True
+Expected: 3
 Status: PASS

@@ -1,7 +1,0 @@
-Benchmark Instance: binary_70_8
-Instance ID: 643
-Number of nodes (n): 70
-
-Algorithm Result:
-Minimum number of cameras: 21
-Selected camera cdps (nodes): [1, 2, 3, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34]

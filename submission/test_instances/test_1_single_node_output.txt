@@ -1,8 +1,9 @@
 Test Instance: test_1_single_node
-Description: Single node (isolated vertex)
+Description: Single node (no edges)
 
 Algorithm Result:
-Minimum number of cameras: 1
-Selected camera cdps (nodes): [0]
-Expected: 1
+Minimum number of cameras: 0
+Selected camera cdps (nodes): []
+Is valid vertex cover?: True
+Expected: 0
 Status: PASS

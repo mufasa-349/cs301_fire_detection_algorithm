@@ -1,0 +1,8 @@
+Benchmark Instance: gnp_19_p15_2
+Instance ID: 93
+Number of nodes (n): 19
+
+Algorithm Result:
+Minimum number of cameras: 9
+Selected camera cdps (nodes): [0, 1, 2, 7, 8, 10, 12, 13, 16]
+Is valid vertex cover?: True

@@ -1,0 +1,8 @@
+Benchmark Instance: cycle_16_0
+Instance ID: 61
+Number of nodes (n): 16
+
+Algorithm Result:
+Minimum number of cameras: 8
+Selected camera cdps (nodes): [0, 2, 4, 6, 8, 10, 12, 14]
+Is valid vertex cover?: True

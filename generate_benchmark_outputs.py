@@ -1,10 +1,17 @@
 """
-Generate benchmark instance files and their outputs for Task 6.
-I'm creating directories for each input size, with instance files and outputs.
+Generate benchmark suite instance files and their outputs for Task 6 (GENERAL GRAPHS).
+
+Directory structure requirement:
+  benchmark_suite/
+    size_n/
+      instance_XXXX_input.txt
+      instance_XXXX_output.txt
+
+We use the exact DP solver for Minimum Vertex Cover in `vertex_cover_dp.py`.
 """
 import os
-from benchmark_dp_forest import generate_benchmark_instances
-from dp_forest import min_cameras_forest_with_solution
+from benchmark_vertex_cover import generate_benchmark_instances
+from vertex_cover_dp import solve_vertex_cover_dp, is_vertex_cover
 
 def create_benchmark_directory():
     """Create benchmark_suite directory structure."""
@@ -36,12 +43,15 @@ def write_benchmark_output(size_dir, instance_id, name, n, result):
         f.write(f"\nAlgorithm Result:\n")
         f.write(f"Minimum number of cameras: {result['count']}\n")
         f.write(f"Selected camera cdps (nodes): {sorted(result['cameras'])}\n")
+        # Quick correctness check (should always be True)
+        f.write(f"Is valid vertex cover?: {is_vertex_cover(n, result['edges'], result['cameras'])}\n")
     return filename
 
 def main():
     """Generate benchmark suite files and outputs."""
     print("Generating benchmark instances...")
-    instances = generate_benchmark_instances()
+    sizes = list(range(10, 30))  # 20 sizes: 10..29
+    instances = generate_benchmark_instances(sizes, instances_per_size=10)
     print(f"Total instances: {len(instances)}")
     
     base_dir = create_benchmark_directory()
@@ -67,9 +77,9 @@ def main():
         for idx, (name, n, edges) in enumerate(size_instances, 1):
             instance_id = total_processed + idx
             
-            # Run algorithm
-            cnt, cams = min_cameras_forest_with_solution(n, edges)
-            result = {"count": cnt, "cameras": cams}
+            # Run algorithm (exact VC DP)
+            cnt, cams = solve_vertex_cover_dp(n, edges)
+            result = {"count": cnt, "cameras": cams, "edges": edges}
             
             # Write input file
             input_file = write_benchmark_instance(base_dir, size_dir, instance_id, name, n, edges)

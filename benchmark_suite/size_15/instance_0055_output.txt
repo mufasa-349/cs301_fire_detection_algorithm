@@ -1,7 +1,8 @@
-Benchmark Instance: forest_15_0
+Benchmark Instance: gnp_dense_15_p35_4
 Instance ID: 55
 Number of nodes (n): 15
 
 Algorithm Result:
-Minimum number of cameras: 6
-Selected camera cdps (nodes): [0, 4, 6, 8, 12, 14]
+Minimum number of cameras: 9
+Selected camera cdps (nodes): [0, 1, 2, 3, 4, 5, 10, 11, 12]
+Is valid vertex cover?: True

@@ -1,0 +1,15 @@
+Benchmark Instance: bip_11_p30_8
+Instance ID: 19
+Number of nodes (n): 11
+Number of edges (m): 10
+Edges:
+  0 5
+  0 10
+  1 5
+  1 10
+  2 8
+  3 7
+  3 9
+  4 5
+  4 7
+  4 9

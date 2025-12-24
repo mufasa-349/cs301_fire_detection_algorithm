@@ -1,0 +1,8 @@
+Benchmark Instance: path_24_1
+Instance ID: 142
+Number of nodes (n): 24
+
+Algorithm Result:
+Minimum number of cameras: 12
+Selected camera cdps (nodes): [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22]
+Is valid vertex cover?: True

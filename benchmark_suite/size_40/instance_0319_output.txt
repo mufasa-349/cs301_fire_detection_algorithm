@@ -1,7 +1,0 @@
-Benchmark Instance: random_40_3
-Instance ID: 319
-Number of nodes (n): 40
-
-Algorithm Result:
-Minimum number of cameras: 15
-Selected camera cdps (nodes): [0, 3, 5, 8, 9, 11, 15, 24, 26, 27, 29, 30, 31, 36, 38]

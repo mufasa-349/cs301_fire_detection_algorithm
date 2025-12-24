@@ -1,0 +1,12 @@
+Test Instance: test_5_cycle_5
+Description: Cycle of 5 nodes (0-1-2-3-4-0)
+Number of nodes (n): 5
+Number of edges (m): 5
+Edges:
+  0 1
+  1 2
+  2 3
+  3 4
+  4 0
+
+Expected minimum cameras (= min vertex cover size): 3

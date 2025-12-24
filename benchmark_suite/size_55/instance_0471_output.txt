@@ -1,7 +1,0 @@
-Benchmark Instance: path_55_4
-Instance ID: 471
-Number of nodes (n): 55
-
-Algorithm Result:
-Minimum number of cameras: 19
-Selected camera cdps (nodes): [0, 2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35, 38, 41, 44, 47, 50, 53]

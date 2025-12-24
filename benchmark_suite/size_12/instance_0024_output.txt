@@ -1,0 +1,8 @@
+Benchmark Instance: bip_12_p30_3
+Instance ID: 24
+Number of nodes (n): 12
+
+Algorithm Result:
+Minimum number of cameras: 4
+Selected camera cdps (nodes): [1, 5, 6, 7]
+Is valid vertex cover?: True

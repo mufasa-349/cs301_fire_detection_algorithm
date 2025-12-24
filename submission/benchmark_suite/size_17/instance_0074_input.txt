@@ -1,0 +1,20 @@
+Benchmark Instance: bip_17_p20_3
+Instance ID: 74
+Number of nodes (n): 17
+Number of edges (m): 15
+Edges:
+  0 15
+  0 16
+  1 12
+  2 9
+  2 14
+  2 15
+  3 10
+  3 12
+  3 16
+  4 9
+  4 16
+  5 13
+  6 8
+  7 11
+  7 16

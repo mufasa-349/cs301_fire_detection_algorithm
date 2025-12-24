@@ -1,7 +1,8 @@
-Benchmark Instance: path_20_1
+Benchmark Instance: cycle_20_5
 Instance ID: 106
 Number of nodes (n): 20
 
 Algorithm Result:
-Minimum number of cameras: 7
-Selected camera cdps (nodes): [0, 3, 6, 9, 12, 15, 18]
+Minimum number of cameras: 10
+Selected camera cdps (nodes): [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
+Is valid vertex cover?: True

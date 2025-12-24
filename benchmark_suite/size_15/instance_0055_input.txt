@@ -1,18 +1,44 @@
-Benchmark Instance: forest_15_0
+Benchmark Instance: gnp_dense_15_p35_4
 Instance ID: 55
 Number of nodes (n): 15
-Number of edges (m): 13
+Number of edges (m): 39
 Edges:
-  2 0
-  6 1
-  6 2
-  4 5
-  7 4
-  3 6
+  0 1
+  0 3
+  0 4
+  0 10
+  0 13
+  1 4
+  1 6
+  1 10
+  1 14
+  2 3
+  2 5
+  2 10
+  2 14
+  3 4
   3 7
-  12 9
-  8 11
-  10 8
-  12 10
-  14 12
-  13 14
+  3 8
+  3 9
+  3 10
+  3 12
+  3 13
+  3 14
+  4 7
+  4 9
+  4 10
+  4 11
+  4 13
+  4 14
+  5 7
+  5 8
+  6 12
+  8 10
+  8 12
+  9 10
+  9 11
+  9 12
+  10 11
+  10 13
+  11 12
+  11 14

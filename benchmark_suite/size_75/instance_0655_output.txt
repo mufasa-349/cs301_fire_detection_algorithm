@@ -1,7 +1,0 @@
-Benchmark Instance: forest_75_0
-Instance ID: 655
-Number of nodes (n): 75
-
-Algorithm Result:
-Minimum number of cameras: 27
-Selected camera cdps (nodes): [1, 2, 5, 11, 14, 15, 16, 25, 27, 28, 29, 31, 34, 37, 38, 41, 46, 50, 54, 57, 58, 59, 61, 63, 64, 69, 71]

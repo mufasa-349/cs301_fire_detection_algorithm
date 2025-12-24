@@ -1,5 +1,5 @@
 Test Instance: test_4_star_graph
-Description: Star graph (center with multiple leaves)
+Description: Star graph (center covers all edges)
 Number of nodes (n): 5
 Number of edges (m): 4
 Edges:
@@ -8,4 +8,4 @@ Edges:
   0 3
   0 4
 
-Expected minimum cameras: 1
+Expected minimum cameras (= min vertex cover size): 1

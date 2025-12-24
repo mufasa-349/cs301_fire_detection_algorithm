@@ -1,0 +1,24 @@
+Benchmark Instance: gnp_23_p10_7
+Instance ID: 138
+Number of nodes (n): 23
+Number of edges (m): 19
+Edges:
+  2 4
+  3 21
+  3 22
+  4 7
+  5 7
+  5 14
+  6 18
+  7 9
+  7 14
+  7 22
+  8 14
+  8 18
+  9 14
+  10 13
+  10 20
+  11 13
+  14 20
+  17 18
+  18 19

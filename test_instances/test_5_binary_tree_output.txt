@@ -1,8 +1,0 @@
-Test Instance: test_5_binary_tree
-Description: Binary tree (balanced)
-
-Algorithm Result:
-Minimum number of cameras: 2
-Selected camera cdps (nodes): [1, 2]
-Expected: 2
-Status: PASS

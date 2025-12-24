@@ -1,8 +1,9 @@
 Test Instance: test_4_star_graph
-Description: Star graph (center with multiple leaves)
+Description: Star graph (center covers all edges)
 
 Algorithm Result:
 Minimum number of cameras: 1
 Selected camera cdps (nodes): [0]
+Is valid vertex cover?: True
 Expected: 1
 Status: PASS

@@ -1,8 +1,0 @@
-Test Instance: test_7_complex_tree
-Description: Complex tree structure
-
-Algorithm Result:
-Minimum number of cameras: 2
-Selected camera cdps (nodes): [1, 3]
-Expected: 2
-Status: PASS

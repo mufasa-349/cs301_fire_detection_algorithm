@@ -1,0 +1,22 @@
+Benchmark Instance: gnp_dense_13_p30_9
+Instance ID: 40
+Number of nodes (n): 13
+Number of edges (m): 17
+Edges:
+  0 2
+  0 5
+  0 8
+  0 10
+  0 12
+  1 6
+  2 9
+  2 10
+  3 6
+  3 12
+  4 5
+  4 6
+  4 11
+  6 7
+  6 11
+  8 9
+  8 10

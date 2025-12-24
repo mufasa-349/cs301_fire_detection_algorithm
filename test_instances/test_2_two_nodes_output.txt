@@ -4,5 +4,6 @@ Description: Two nodes (single edge)
 Algorithm Result:
 Minimum number of cameras: 1
 Selected camera cdps (nodes): [0]
+Is valid vertex cover?: True
 Expected: 1
 Status: PASS

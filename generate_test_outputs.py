@@ -1,19 +1,23 @@
 """
-Generate test instance files and their outputs for Task 5.
-I'm creating input files describing each test instance and output files
-with the results from running the algorithm.
+Generate test instance files and their outputs for Task 5 (GENERAL GRAPHS).
+
+We model the monitoring requirement as Minimum Vertex Cover:
+- cdps are vertices
+- shared regions {u,v} are edges
+- selecting a camera at u monitors all shared regions incident to u
+- we need the smallest set of vertices that touches (covers) every edge
 """
 import os
-from dp_forest import min_cameras_forest_with_solution
+from vertex_cover_dp import solve_vertex_cover_dp, is_vertex_cover
 
-# Test instances from test_dp_forest.py
+# 7 functional test instances (white-box + black-box), including cycles.
 test_instances = [
     {
         "name": "test_1_single_node",
-        "description": "Single node (isolated vertex)",
+        "description": "Single node (no edges)",
         "n": 1,
         "edges": [],
-        "expected": 1
+        "expected": 0
     },
     {
         "name": "test_2_two_nodes",
@@ -23,39 +27,39 @@ test_instances = [
         "expected": 1
     },
     {
-        "name": "test_3_path_3_nodes",
-        "description": "Path of 3 nodes",
+        "name": "test_3_triangle_cycle",
+        "description": "Triangle cycle 0-1-2-0 (cycle counterexample)",
         "n": 3,
-        "edges": [(0, 1), (1, 2)],
-        "expected": 1
+        "edges": [(0, 1), (1, 2), (2, 0)],
+        "expected": 2
     },
     {
         "name": "test_4_star_graph",
-        "description": "Star graph (center with multiple leaves)",
+        "description": "Star graph (center covers all edges)",
         "n": 5,
         "edges": [(0, 1), (0, 2), (0, 3), (0, 4)],
         "expected": 1
     },
     {
-        "name": "test_5_binary_tree",
-        "description": "Binary tree (balanced)",
-        "n": 7,
-        "edges": [(0, 1), (0, 2), (1, 3), (1, 4), (2, 5), (2, 6)],
-        "expected": 2
+        "name": "test_5_cycle_5",
+        "description": "Cycle of 5 nodes (0-1-2-3-4-0)",
+        "n": 5,
+        "edges": [(0, 1), (1, 2), (2, 3), (3, 4), (4, 0)],
+        "expected": 3
     },
     {
         "name": "test_6_forest_2_components",
-        "description": "Forest with multiple components",
-        "n": 6,
-        "edges": [(0, 1), (1, 2), (3, 4), (4, 5)],
-        "expected": 2
+        "description": "Disconnected graph: one edge + one triangle",
+        "n": 5,
+        "edges": [(0, 1), (2, 3), (3, 4), (4, 2)],
+        "expected": 3
     },
     {
-        "name": "test_7_complex_tree",
-        "description": "Complex tree structure",
+        "name": "test_7_complete_graph_k5",
+        "description": "Complete graph K5 (dense case)",
         "n": 5,
-        "edges": [(0, 1), (1, 2), (1, 3), (3, 4)],
-        "expected": 2
+        "edges": [(0,1),(0,2),(0,3),(0,4),(1,2),(1,3),(1,4),(2,3),(2,4),(3,4)],
+        "expected": 4
     }
 ]
 
@@ -77,7 +81,7 @@ def write_instance_file(test_dir, test):
         f.write(f"Edges:\n")
         for u, v in test['edges']:
             f.write(f"  {u} {v}\n")
-        f.write(f"\nExpected minimum cameras: {test['expected']}\n")
+        f.write(f"\nExpected minimum cameras (= min vertex cover size): {test['expected']}\n")
     return filename
 
 def write_output_file(test_dir, test, result):
@@ -89,6 +93,7 @@ def write_output_file(test_dir, test, result):
         f.write(f"\nAlgorithm Result:\n")
         f.write(f"Minimum number of cameras: {result['count']}\n")
         f.write(f"Selected camera cdps (nodes): {sorted(result['cameras'])}\n")
+        f.write(f"Is valid vertex cover?: {is_vertex_cover(test['n'], test['edges'], result['cameras'])}\n")
         f.write(f"Expected: {test['expected']}\n")
         f.write(f"Status: {'PASS' if result['count'] == test['expected'] else 'FAIL'}\n")
     return filename
@@ -101,8 +106,8 @@ def main():
     for test in test_instances:
         print(f"Processing {test['name']}...")
         
-        # Run algorithm
-        cnt, cams = min_cameras_forest_with_solution(test['n'], test['edges'])
+        # Run algorithm (exact DP for general graphs)
+        cnt, cams = solve_vertex_cover_dp(test['n'], test['edges'])
         result = {"count": cnt, "cameras": cams}
         
         # Write input file

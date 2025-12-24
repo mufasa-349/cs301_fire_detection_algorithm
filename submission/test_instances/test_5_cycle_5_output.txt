@@ -1,0 +1,9 @@
+Test Instance: test_5_cycle_5
+Description: Cycle of 5 nodes (0-1-2-3-4-0)
+
+Algorithm Result:
+Minimum number of cameras: 3
+Selected camera cdps (nodes): [0, 1, 3]
+Is valid vertex cover?: True
+Expected: 3
+Status: PASS

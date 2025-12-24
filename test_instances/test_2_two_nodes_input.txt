@@ -5,4 +5,4 @@ Number of edges (m): 1
 Edges:
   0 1
 
-Expected minimum cameras: 1
+Expected minimum cameras (= min vertex cover size): 1

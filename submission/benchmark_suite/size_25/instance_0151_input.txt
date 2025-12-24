@@ -1,7 +1,7 @@
-Benchmark Instance: path_25_0
+Benchmark Instance: cycle_25_0
 Instance ID: 151
 Number of nodes (n): 25
-Number of edges (m): 24
+Number of edges (m): 25
 Edges:
   0 1
   1 2
@@ -27,3 +27,4 @@ Edges:
   21 22
   22 23
   23 24
+  24 0

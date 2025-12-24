@@ -1,0 +1,9 @@
+Test Instance: test_7_complete_graph_k5
+Description: Complete graph K5 (dense case)
+
+Algorithm Result:
+Minimum number of cameras: 4
+Selected camera cdps (nodes): [0, 1, 2, 3]
+Is valid vertex cover?: True
+Expected: 4
+Status: PASS

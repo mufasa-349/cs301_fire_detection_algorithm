@@ -1,11 +1,11 @@
 Test Instance: test_6_forest_2_components
-Description: Forest with multiple components
-Number of nodes (n): 6
+Description: Disconnected graph: one edge + one triangle
+Number of nodes (n): 5
 Number of edges (m): 4
 Edges:
   0 1
-  1 2
+  2 3
   3 4
-  4 5
+  4 2
 
-Expected minimum cameras: 2
+Expected minimum cameras (= min vertex cover size): 3

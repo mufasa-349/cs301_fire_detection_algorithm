@@ -1,0 +1,10 @@
+Test Instance: test_3_triangle_cycle
+Description: Triangle cycle 0-1-2-0 (cycle counterexample)
+Number of nodes (n): 3
+Number of edges (m): 3
+Edges:
+  0 1
+  1 2
+  2 0
+
+Expected minimum cameras (= min vertex cover size): 2
